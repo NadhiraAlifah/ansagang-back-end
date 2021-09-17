@@ -12,6 +12,14 @@ import { timelineCards } from './data.js'
 const app = express()
 const port = process.env.PORT || 9000;
 
+const connection_URL = 'mongodb+srv://ansagang:W:RDZb-E93Caj4z@cluster0.szvq4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+mongoose.connect(connection_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+})
+
 app.use(express.json())
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"),
