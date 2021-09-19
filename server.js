@@ -20,10 +20,10 @@ mongoose.connect(connection_URL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
-})
-
-mongoose.connection.once('open', () => {
+}, _ => {
     console.log('DB connected');
+}, err => {
+    console.log('error ' + err)
 })
 
 app.use(express.json())
@@ -67,13 +67,15 @@ app.post('/api/form', (req, res) => {
     const email = req.body.email
     const message = req.body.message
     new Form({
-        username,
-        subject,
-        email,
-        message
-    }).save()
-
-    res.json('success true')
+        username: username,
+        subject: subject,
+        email: email,
+        message: message
+    }).save(err => {
+        console.log(err)
+        if(err) res.json(err)
+        else res.json('success true')
+    })
 })
 
 app.listen(port, () => console.log(`listening on localhost:${port}`))
