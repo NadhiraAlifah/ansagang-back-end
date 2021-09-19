@@ -1,5 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from 'cors'
+import Form from './models/formModel.js'
 
 import { careerJobs } from './data.js'
 import { portfolioProjects } from './data.js'
@@ -12,7 +14,7 @@ import { timelineCards } from './data.js'
 const app = express()
 const port = process.env.PORT || 9000;
 
-const connection_URL = 'mongodb+srv://ansagang:W:RDZb-E93Caj4z@cluster0.szvq4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const connection_URL = 'mongodb+srv://admin:admin@cluster0.pn3q6.mongodb.net/formDB?retryWrites=true&w=majority'
 
 mongoose.connect(connection_URL, {
     useNewUrlParser: true,
@@ -20,12 +22,13 @@ mongoose.connect(connection_URL, {
     useUnifiedTopology: true
 })
 
-app.use(express.json())
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*"),
-        res.setHeader("Access-Control-Allow-Headers", "*"),
-        next();
+mongoose.connection.once('open', () => {
+    console.log('DB connected');
 })
+
+app.use(express.json())
+app.use(cors())
+
 
 app.get('/', (req, res) => res.status(200).send('ansagang'))
 
@@ -42,5 +45,35 @@ app.get('/api/technologies-items', (req, res) => res.status(200).send(technologi
 app.get('/api/questions-answers', (req, res) => res.status(200).send(questionsanswers))
 
 app.get('/api/timeline', (req, res) => res.status(200).send(timelineCards))
+
+app.get('/api/form', (req, res) => {
+    const username = req.body.username
+    const subject = req.body.subject
+    const email = req.body.email
+    const message = req.body.message
+    const newForm = new Form({
+        username,
+        subject,
+        email,
+        message
+    })
+
+    newForm.save()
+})
+
+app.post('/api/form', (req, res) => {
+    const username = req.body.username
+    const subject = req.body.subject
+    const email = req.body.email
+    const message = req.body.message
+    new Form({
+        username,
+        subject,
+        email,
+        message
+    }).save()
+
+    res.json('success true')
+})
 
 app.listen(port, () => console.log(`listening on localhost:${port}`))
