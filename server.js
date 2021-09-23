@@ -43,7 +43,7 @@ app.post('/api/form', (req, res) => {
 
 app.get('/api/career-jobs', (req, res) => res.status(200).send(careerJobs))
 app.get('/api/portfolio-projects', (req, res) => res.status(200).send(portfolioProjects))
-app.get('/api/skills', (req, res) => res.status(200).send(skillsMarkup))
+app.get('/api/skills-level', (req, res) => res.status(200).send(skillsMarkup))
 app.get('/api/technologies', (req, res) => res.status(200).send(technologies))
 app.get('/api/technologies-items', (req, res) => res.status(200).send(technologiesItems))
 app.get('/api/questions-answers', (req, res) => res.status(200).send(questionsanswers))
