@@ -1,4 +1,4 @@
-const technologies = [
+const portfolioProjectsTabs = [
     {
         id: "frontend",
         title: "Front-End"
@@ -14,7 +14,11 @@ const technologies = [
     {
         id: "design",
         title: "Design"
+    },
+    {
+        id: "full-stack",
+        title: "Full-Stack"
     }
 ]
 
-module.exports = technologies
+module.exports = portfolioProjectsTabs

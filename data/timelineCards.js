@@ -11,6 +11,14 @@ const timelineCards = [
         timelinecard_year: "2021",
         timelinecard_action: "Worked as a freelance developer"
     },
+    {
+        timelinecard_year: "2022",
+        timelinecard_action: "Amongus"
+    },
+    {
+        timelinecard_year: "2023",
+        timelinecard_action: "Ansagang CEO"
+    }
 ]
 
 module.exports = timelineCards

@@ -9,10 +9,11 @@ const DBURL = 'mongodb+srv://admin:admin@cluster0.qesqn.mongodb.net/form?retryWr
 const careerJobs = require('./data/careerJobs')
 const portfolioProjects = require('./data/portfolioProjects')
 const skillsMarkup = require('./data/skillsMarkup')
-const technologies = require('./data/technologies')
+const portfolioProjectsTabs = require('./data/portfolioProjectsTabs')
 const technologiesItems = require('./data/technologiesItems')
 const questionsanswers = require('./data/questionsanswers')
 const timelineCards = require('./data/timelineCards')
+const technologies = require('./data/technologies')
 
 app.listen(PORT, () => {
   console.log(chalk.green(`Listening on port ${PORT}`))
@@ -44,7 +45,8 @@ app.post('/api/form', (req, res) => {
 app.get('/api/career-jobs', (req, res) => res.status(200).send(careerJobs))
 app.get('/api/portfolio-projects', (req, res) => res.status(200).send(portfolioProjects))
 app.get('/api/skills-level', (req, res) => res.status(200).send(skillsMarkup))
-app.get('/api/technologies', (req, res) => res.status(200).send(technologies))
+app.get('/api/portfolio-projects-tabs', (req, res) => res.status(200).send(portfolioProjectsTabs))
 app.get('/api/technologies-items', (req, res) => res.status(200).send(technologiesItems))
+app.get('/api/technologies', (req, res) => res.status(200).send(technologies))
 app.get('/api/questions-answers', (req, res) => res.status(200).send(questionsanswers))
 app.get('/api/timeline', (req, res) => res.status(200).send(timelineCards))
