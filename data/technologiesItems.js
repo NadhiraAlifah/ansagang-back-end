@@ -78,6 +78,11 @@ const technologiesItems = [
         title: "Graphql",
         img: "GraphQL_Logo.svg.png",
         id: "backend"
+    },
+    {
+        title: "Figma",
+        img: "figma-1.svg",
+        id: "design"
     }
 ]
 

@@ -14,6 +14,7 @@ const technologiesItems = require('./data/technologiesItems')
 const questionsanswers = require('./data/questionsanswers')
 const timelineCards = require('./data/timelineCards')
 const technologies = require('./data/technologies')
+const contactDetails = require('./data/contactDetails')
 
 app.listen(PORT, () => {
   console.log(chalk.green(`Listening on port ${PORT}`))
@@ -50,3 +51,4 @@ app.get('/api/technologies-items', (req, res) => res.status(200).send(technologi
 app.get('/api/technologies', (req, res) => res.status(200).send(technologies))
 app.get('/api/questions-answers', (req, res) => res.status(200).send(questionsanswers))
 app.get('/api/timeline', (req, res) => res.status(200).send(timelineCards))
+app.get('/api/contact-details' ,(req, res) => res.status(200).send(contactDetails))
