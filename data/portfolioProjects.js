@@ -9,7 +9,7 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansagang-business.netlify.app',
-        project_favourite: false,
+        project_favourite: true,
         project_year: 2021
     },
     {
@@ -44,7 +44,7 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansagang-webdesign.netlify.app',
-        project_favourite: false
+        project_favourite: true
     },
     {
         project_title: "Ansagang Portfolio",
@@ -67,7 +67,7 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansagang-cinema.web.app/',
-        project_favourite: true
+        project_favourite: false
     },
     {
         project_title: "Grab Architecture",
@@ -79,7 +79,7 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansarabengrab.netlify.app/',
-        project_favourite: true
+        project_favourite: false
     },
 ]
 
