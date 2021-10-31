@@ -44,7 +44,9 @@ app.post('/api/form', (req, res) => {
   })
 })
 
-app.get('/api/career-jobs', (req, res) => res.status(200).send(careerJobs))
+// app.get('/api/form', (req, res) => res.status(200).send(сюда надо ее засунуть
+
+app.get('/api/career-jobs', (req, res) => res.send(careerJobs))
 app.get('/api/portfolio-projects', (req, res) => res.status(200).send(portfolioProjects))
 app.get('/api/skills-level', (req, res) => res.status(200).send(skillsMarkup))
 app.get('/api/portfolio-projects-tabs', (req, res) => res.status(200).send(portfolioProjectsTabs))

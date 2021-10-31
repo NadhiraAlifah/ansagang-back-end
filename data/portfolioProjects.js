@@ -9,6 +9,7 @@ const portfolioProjects = [
         project_theme_id: 'frontend',
         project_link: 'https://ansagang-business.netlify.app',
         project_favourite: true,
+        project_id: 0,
         project_year: 2021
     },
     {
@@ -19,7 +20,8 @@ const portfolioProjects = [
         project_logo: 'ansagang-furniture.png',
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
-        project_favourite: true
+        project_favourite: true,
+        project_id: 1,
     },
     {
         project_title: "Ansagang Game-Dev",
@@ -29,7 +31,8 @@ const portfolioProjects = [
         project_logo: 'ansagang-gamedev.png',
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
-        project_favourite: true
+        project_favourite: false,
+        project_id: 2
     },
     {
         project_title: "Ansagang Web Design",
@@ -40,7 +43,8 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansagang-webdesign.netlify.app',
-        project_favourite: true
+        project_favourite: true,
+        project_id: 3
     },
     {
         project_title: "Ansagang Portfolio",
@@ -50,7 +54,8 @@ const portfolioProjects = [
         project_logo: 'ansagang.png',
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
-        project_favourite: false
+        project_favourite: false,
+        project_id: 4
     },
     {
         project_title: "Ansagang Cinema",
@@ -61,7 +66,8 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansagang-cinema.web.app/',
-        project_favourite: false
+        project_favourite: false,
+        project_id: 5
     },
     {
         project_title: "Grab Architecture",
@@ -72,7 +78,8 @@ const portfolioProjects = [
         project_theme: 'Front-end',
         project_theme_id: 'frontend',
         project_link: 'https://ansarabengrab.netlify.app/',
-        project_favourite: false
+        project_favourite: true,
+        project_id: 6
     }
 ]
 
