@@ -1,20 +1,5 @@
-const technologies = [
-    {
-        id: "frontend",
-        title: "Front-End"
-    },
-    {
-        id: "backend",
-        title: "Back-End"
-    },
-    {
-        id: "mobile",
-        title: "Mobile"
-    },
-    {
-        id: "design",
-        title: "Design"
-    }
-]
+const technologiesModel = require('../technologies.model.js')
 
-module.exports = technologies
+module.exports = async() => {
+    return await technologiesModel.find({})
+}
