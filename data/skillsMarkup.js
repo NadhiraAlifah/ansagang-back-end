@@ -1,4 +1,4 @@
-const skillsMarkupModel = require('../skillsMarkup.model.js')
+const skillsMarkupModel = require('../models/skillsMarkup.model.js')
 
 module.exports = async() => {
     return await skillsMarkupModel.find({})

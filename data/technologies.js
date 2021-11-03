@@ -1,4 +1,4 @@
-const technologiesModel = require('../technologies.model.js')
+const technologiesModel = require('../models/technologies.model.js')
 
 module.exports = async() => {
     return await technologiesModel.find({})

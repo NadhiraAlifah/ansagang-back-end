@@ -1,4 +1,4 @@
-const questionsanswersModel = require('../questionsanswers.model.js')
+const questionsanswersModel = require('../models/questionsanswers.model.js')
 
 module.exports = async() => {
     return await questionsanswersModel.find({})
