@@ -54,7 +54,7 @@ app.get('/api', (req, res) => res.status(200).send('Api is ready to work'))
 
 app.get('/api/form', async (req, res) => { res.send(await contactForm()) })
 app.post('/api/form', (req, res) => { new contact({ username: req.body.username, subject: req.body.subject, email: req.body.email, message: req.body.message }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) }) })
-app.post('/api/form-delete', async (req, res) => { await contact.remove({})})
+app.post('/api/form-delete', async (req, res) => { await contact.deleteMany().then(err => {if (!err) res.json({ success: true }); else res.json({ success: false, error: err })} )})
 
 app.get('/api/career-jobs', async (req, res) => { res.send(await careerJobs()) })
 app.post('/api/career-jobs', (req, res) => { new careerJobsModel({ career_job_title: req.body.career_job_title }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) }) })
