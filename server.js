@@ -19,8 +19,10 @@ const technologies = require('./data/technologies')
 const contactDetails = require('./data/contactDetails')
 const availability = require('./data/availability')
 const password = require('./data/password')
+const age = require('./data/age')
 
 const careerJobsModel = require('./models/careerJobs.model.js')
+const ageModel = require('./models/age.model.js')
 const contactDetailsModel = require('./models/contactDetails.model.js')
 const portfolioProjectsModel = require('./models/portfolioProjects.model.js')
 const portfolioProjectsTabsModel = require('./models/portfolioProjectsTabs.model.js')
@@ -29,6 +31,7 @@ const skillsMarkupModel = require('./models/skillsMarkup.model.js')
 const technologiesModel = require('./models/technologies.model.js')
 const technologiesItemsModel = require('./models/technologiesItems.model.js')
 const timelineCardsModel = require('./models/timelineCards.model.js')
+const availabilityModel = require('./models/availability.model.js')
 
 app.listen(PORT, () => {
   console.log(chalk.green(`Listening on port ${PORT}`))
@@ -94,10 +97,14 @@ app.post('/api/timeline-cards', async (req, res) => {new timelineCardsModel({tim
 app.post('/api/timeline-cards-delete', async (req, res) => {await timelineCardsModel.findByIdAndRemove(req.body._id).then(err => {if (!err) res.json({ success: true }); else res.json({ success: false, error: err })} )})
 
 app.get('/api/availability', async (req, res) => { res.send(await availability()) })
+app.post('/api/availability', async (req, res) => {await availabilityModel.findByIdAndUpdate(req.body._id, {availability: req.body.availability}).then(err => {if (!err) res.json({ success: true }); else res.json({ success: false, error: err })} )})
+
+app.get('/api/age', async (req, res) => { res.send(await age()) })
+app.post('/api/age', async (req, res) => {await ageModel.findByIdAndUpdate(req.body._id, {age: req.body.age, date: req.body.date}).then(err => {if (!err) res.json({ success: true }); else res.json({ success: false, error: err })} )})
 
 app.post('/api/password', async (req, res) => {
   const onePassword = await password()
-  if (req.body.password === onePassword[0].password) {
+  if (req.body.password === onePassword[onePassword.length - 1].password) {
     res.send('Password is correct')
   } else {
     res.send('Password is incorrect')
