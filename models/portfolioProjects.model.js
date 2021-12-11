@@ -10,7 +10,7 @@ const portfolioProjectsSchema = new mongoose.Schema({
     project_theme_id: String,
     project_link: String,
     project_favourite:Boolean,
-    project_year:String
+    project_year:String,
 })
 
 module.exports = mongoose.model('portfolio_projects', portfolioProjectsSchema)
