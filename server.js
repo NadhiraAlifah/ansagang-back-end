@@ -82,7 +82,7 @@ app.use(cors())
 app.use('/uploads', express.static('uploads'))
 
 app.get('/api', (req, res) => res.status(200).send('Api is ready to work'))
-app.get('/api/form/apikey=:apikey', async (req, res) => {
+app.get('/api/form', async (req, res) => {
   res.send(await contactForm())
 })
 app.post('/api/form/apikey=:apikey', async (req, res) => {
