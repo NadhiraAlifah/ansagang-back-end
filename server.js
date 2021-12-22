@@ -4,7 +4,7 @@ const cors = require('cors')
 const chalk = require('chalk')
 const contact = require('./models/contactForm.model.js')
 const app = express()
-const PORT = 9000
+const PORT = process.env.PORT || 9000
 const DBURL = 'mongodb+srv://admin:admin@cluster0.qesqn.mongodb.net/form?retryWrites=true&w=majority'
 const multer = require('multer')
 
