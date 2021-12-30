@@ -36,7 +36,7 @@ router.get('/get', async (req, res) => {
 })
 
 router.get('/:id/get', async (req, res) => {
-    res.send(PortfolioProjects.find({ _id: req.params.id}))
+    res.send(await PortfolioProjects.find({ _id: req.params.id}))
 })
 
 router.post('/add/apikey=:apikey', upload.fields([{ name: 'project_logo', maxCount: 10 }, { name: 'project_poster', maxCount: 10 }]), async (req, res) => {
