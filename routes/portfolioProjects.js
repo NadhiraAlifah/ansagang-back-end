@@ -35,7 +35,7 @@ router.get('/get', async (req, res) => {
     res.send(portfolioProjects)
 })
 
-router.get('/:id/get', async (req, res) => {
+router.get('/project-:id/get', async (req, res) => {
     res.send(await PortfolioProjects.find({ _id: req.params.id}))
 })
 
