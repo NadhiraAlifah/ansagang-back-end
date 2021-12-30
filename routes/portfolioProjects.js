@@ -43,6 +43,7 @@ router.post('/add/apikey=:apikey', upload.fields([{ name: 'project_logo', maxCou
     const { project_title, project_overview, project_lang, project_theme, project_theme_id, project_link, project_favourite, project_year } = req.body
     const apikey = await Configs.find({})
     if (req.params.apikey === apikey[apikey.length - 1].api_password) {
+        console.log(req.files);
         project_posters = []
         req.files.project_poster.forEach(file => { project_posters.push(file.path) })
         new PortfolioProjects({ project_poster: project_posters, project_title: project_title, project_overview: project_overview, project_lang: project_lang, project_logo: req.files ? req.files.project_logo[0].path : undefined, project_theme: project_theme, project_theme_id: project_theme_id, project_link: project_link, project_favourite: project_favourite, project_year: project_year }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
