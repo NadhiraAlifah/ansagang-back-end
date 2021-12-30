@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const contact = require('./models/contactForm.model.js')
 const app = express()
 const PORT = process.env.PORT || 9000
-const DBURL = 'mongodb+srv://admin:admin@cluster0.qesqn.mongodb.net/form?retryWrites=true&w=majority'
+const DBURL = null
 const multer = require('multer')
 
 const storage = multer.diskStorage({
