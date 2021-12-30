@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const configsSchema = new mongoose.Schema({
+const configsSchema = mongoose.Schema({
     api_password:String
 })
 
-module.exports = mongoose.model('configs', configsSchema)
+const Configs = mongoose.model('configs', configsSchema)
+
+export default Configs

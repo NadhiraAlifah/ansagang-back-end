@@ -1,8 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const skillsMarkupSchema = new mongoose.Schema({
+const skillsMarkupSchema = mongoose.Schema({
     skills_name:String,
     skills_level:String
 })
 
-module.exports = mongoose.model('skills_markup', skillsMarkupSchema)
+const SkillsMarkup = mongoose.model('skills_markup', skillsMarkupSchema)
+
+export default SkillsMarkup

@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const careerSchema = new mongoose.Schema({
+const careerSchema = mongoose.Schema({
   career_job_title: String
 })
 
-module.exports = mongoose.model('careerjobs', careerSchema)
+const CareerJobs = mongoose.model('careerjobs', careerSchema)
+
+export default CareerJobs

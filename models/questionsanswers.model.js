@@ -1,8 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const questionsanswersSchema = new mongoose.Schema({
+const questionsanswersSchema = mongoose.Schema({
   question:String,
   answer:String
 })
 
-module.exports = mongoose.model('questions_answers', questionsanswersSchema)
+const QuestionsAnswers = mongoose.model('questions_answers', questionsanswersSchema)
+
+export default QuestionsAnswers

@@ -1,8 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const portfolioProjectsTabsSchema = new mongoose.Schema({
+const portfolioProjectsTabsSchema = mongoose.Schema({
   id:String,
   title: String
 })
 
-module.exports = mongoose.model('portfolio_projects_tabs', portfolioProjectsTabsSchema)
+const PortfolioProjectsTabs = mongoose.model('portfolio_projects_tabs', portfolioProjectsTabsSchema)
+
+export default PortfolioProjectsTabs

@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const availabilitySchema = new mongoose.Schema({
+const availabilitySchema = mongoose.Schema({
   availability: String
 })
 
-module.exports = mongoose.model('availability', availabilitySchema)
+const Availability = mongoose.model('availability', availabilitySchema)
+
+export default Availability

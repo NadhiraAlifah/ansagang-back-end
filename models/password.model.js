@@ -1,7 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const passwordSchema = new mongoose.Schema({
+const passwordSchema = mongoose.Schema({
     password:String
 })
 
-module.exports = mongoose.model('password', passwordSchema)
+const Password = mongoose.model('password', passwordSchema)
+
+export default Password

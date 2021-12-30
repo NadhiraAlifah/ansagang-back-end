@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const contactSchema = new mongoose.Schema({
+const contactSchema = mongoose.Schema({
   username: String,
   subject: String,
   email: String,
   message: String
 })
 
-module.exports = mongoose.model('contact_me', contactSchema)
+const ContactMe = mongoose.model('contact_me', contactSchema)
+
+export default ContactMe

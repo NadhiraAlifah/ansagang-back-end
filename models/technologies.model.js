@@ -1,8 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const technologiesSchema = new mongoose.Schema({
+const technologiesSchema = mongoose.Schema({
     id:String,
     title:String
 })
 
-module.exports = mongoose.model('technologies', technologiesSchema)
+const Technologies = mongoose.model('technologies', technologiesSchema)
+
+export default Technologies

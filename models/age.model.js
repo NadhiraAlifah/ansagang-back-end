@@ -1,8 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const ageSchema = new mongoose.Schema({
+const ageSchema = mongoose.Schema({
   age:String,
   date:Number
 })
 
-module.exports = mongoose.model('age', ageSchema)
+const Age = mongoose.model('age', ageSchema)
+
+export default Age

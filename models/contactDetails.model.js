@@ -1,9 +1,11 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const contactDetailsSchema = new mongoose.Schema({
+const contactDetailsSchema = mongoose.Schema({
     contact_detail_title: String,
     contact_detail_value: String,
     contact_detail_link: String
 })
 
-module.exports = mongoose.model('contact_details', contactDetailsSchema)
+const ContactDetails = mongoose.model('contact_details', contactDetailsSchema)
+
+export default ContactDetails
