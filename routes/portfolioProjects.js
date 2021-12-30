@@ -35,6 +35,10 @@ router.get('/get', async (req, res) => {
     res.send(portfolioProjects)
 })
 
+router.get('/:id/get', async (req, res) => {
+    res.send(PortfolioProjects.find({ _id: req.params.id}))
+})
+
 router.post('/add/apikey=:apikey', upload.fields([{ name: 'project_logo', maxCount: 10 }, { name: 'project_poster', maxCount: 10 }]), async (req, res) => {
     const { project_title, project_overview, project_lang, project_theme, project_theme_id, project_link, project_favourite, project_year } = req.body
     const apikey = await Configs.find({})
