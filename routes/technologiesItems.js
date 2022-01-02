@@ -7,7 +7,7 @@ const router = express.Router()
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../uploads/')
+        cb(null, './uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname)
@@ -15,10 +15,10 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-    if (file.mimitype === 'image/jpeg' || file.mimitype === 'image/png' || file.mimitype === 'image/webp') {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/webp') {
         cb(null, true)
     } else {
-        cb(null, true)
+        cb(new Error('This is not image file type'), false)
     }
 }
 
