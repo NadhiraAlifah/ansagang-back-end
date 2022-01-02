@@ -7,7 +7,7 @@ const router = express.Router()
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../uploads/')
+        cb(null, './uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname)
@@ -40,12 +40,13 @@ router.get('/project-:id/get', async (req, res) => {
 })
 
 router.post('/add/apikey=:apikey', upload.fields([{ name: 'project_logo', maxCount: 10 }, { name: 'project_poster', maxCount: 10 }]), async (req, res) => {
+    const { project_title, project_overview, project_lang, project_theme, project_theme_id, project_link, project_favourite, project_year } = req.body
+    console.log(req);
     const apikey = await Configs.find({})
     if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-        console.log(req.files);
         project_posters = []
         req.files.project_poster.forEach(file => { project_posters.push(file.path) })
-        new PortfolioProjects({ project_poster: project_posters, project_title: req.body.project_title, project_overview: req.body.project_overview, project_lang: req.body.project_lang, project_logo: req.files ? req.files.project_logo[0].path : undefined, project_theme: req.body.project_theme, project_theme_id: req.body.project_theme_id, project_link: req.body.project_link, project_favourite: req.body.project_favourite, project_year: req.body.project_year }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
+        new PortfolioProjects({ project_poster: project_posters, project_title: project_title, project_overview: project_overview, project_lang: project_lang, project_logo: req.files ? req.files.project_logo[0].path : undefined, project_theme: project_theme, project_theme_id: project_theme_id, project_link: project_link, project_favourite: project_favourite, project_year: project_year }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
     }
 })
 
