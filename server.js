@@ -18,7 +18,7 @@ import timelineCards from './routes/timelineCards.js'
 
 const app = express()
 const PORT = process.env.PORT || 9000
-const DBURL = "mongodb+srv://admin:admin@cluster0.qesqn.mongodb.net/form?retryWrites=true&w=majority"
+const DBURL = "mongodb+srv://<username>:<password>@cluster0.qesqn.mongodb.net/form?retryWrites=true&w=majority"
 
 app.listen(PORT, () => {
   console.log(chalk.green(`Listening on port ${PORT}`))
