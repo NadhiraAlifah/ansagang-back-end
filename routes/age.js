@@ -4,21 +4,38 @@ import Configs from '../models/configs.model.js'
 
 const router = express.Router()
 
-router.get('/get', async (req, res) => {
+router.get('/get', async (res) => {
     const age = await Age.find({})
-    res.send(age)
+    res.send({
+        success: true,
+        data: age,
+        message: "Lessons retrieved successfully"
+    })
 })
 
 router.post('/change/apikey=:apikey', async (req, res) => {
-    const { age, date, _id } = req.body
-    const apikey = await Configs.find({})
-    if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-        Age.findByIdAndUpdate(_id, { age: age, date: date }).then(err => {
-            if (!err) {
-                res.json({ success: true })
-            } else {
-                res.json({ success: false, error: err })
-            }
+    try {
+        const { age, date, _id } = req.body
+        const apikey = await Configs.find({})
+        if (req.params.apikey === apikey[apikey.length - 1].api_password) {
+            Age.findByIdAndUpdate(_id, { age: age, date: date }).then(err => {
+                if (!err) {
+                    res.send({
+                        success: true,
+                        message: "Lessons have been changed successfully"
+                    })
+                } else {
+                    res.send({
+                        success: false,
+                        message: err
+                    })
+                }
+            })
+        }
+    } catch {
+        res.send({
+            success: false,
+            message: 'Missing fields'
         })
     }
 })
