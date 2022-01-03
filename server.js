@@ -7,7 +7,7 @@ import availability from './routes/availability.js'
 import careerJobs from './routes/careerJobs.js'
 import contactDetails from './routes/contactDetails.js'
 import contactForm from './routes/contactForm.js'
-import password from './routes/password.js'
+import apiPassword from './routes/apiPassword.js'
 import portfolioProjects from './routes/portfolioProjects.js'
 import portfolioProjectsTabs from './routes/portfolioProjectsTabs.js'
 import questionsAnswers from './routes/questionsAnswers.js'
@@ -47,7 +47,7 @@ app.use('/api/availability', availability)
 app.use('/api/careerJobs', careerJobs)
 app.use('/api/contactDetails', contactDetails)
 app.use('/api/contactForm', contactForm)
-app.use('/api/password', password)
+app.use('/api/apiPassword', apiPassword)
 app.use('/api/portfolioProjects', portfolioProjects)
 app.use('/api/portfolioProjectsTabs', portfolioProjectsTabs)
 app.use('/api/questionsAnswers', questionsAnswers)

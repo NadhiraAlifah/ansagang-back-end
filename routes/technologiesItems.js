@@ -2,6 +2,7 @@ import express from 'express'
 import TechnologiesItems from '../models/technologiesItems.model.js'
 import Configs from '../models/configs.model.js'
 import multer from 'multer'
+import e from 'express'
 
 const router = express.Router()
 
@@ -32,22 +33,64 @@ const upload = multer({
 
 router.get('/get', async (req, res) => {
     const technologiesItems = await TechnologiesItems.find({})
-    res.send(technologiesItems)
+    res.send({
+        success: true,
+        data: technologiesItems,
+        message: "Technologies Items have been retrieved successfully"
+    })
 })
 
 router.post('/add/apikey=:apikey', upload.single('img'), async (req, res) => {
     const { id, title } = req.body
-    const apikey = await Configs.find({})
-    if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-        new TechnologiesItems({ id: id, title: title, img: req.file ? req.file.path : null }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
+    const configs = await Configs.findOne({ _id: "61bb0a67959494f1b8ba8375" })
+    if (req.params.apikey === configs.api_key) {
+        new TechnologiesItems({
+            id: id,
+            title: title,
+            img: req.file ? req.file.path : null
+        }).save(err => {
+            if (!err) {
+                res.send({
+                    success: true,
+                    message: "Technologie Item has been deleted successfully"
+                })
+            } else {
+                res.send({
+                    success: false,
+                    message: err
+                })
+            }
+        })
+    } else {
+        res.send({
+            success: false,
+            message: "Invalid api key"
+        })
     }
 })
 
 router.post('/delete/apikey=:apikey', async (req, res) => {
     const { _id } = req.body
-    const apikey = await Configs.find({})
-    if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-        TechnologiesItems.findByIdAndRemove(_id).then(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
+    const configs = await Configs.findOne({ _id: "61bb0a67959494f1b8ba8375" })
+    if (req.params.apikey === configs.api_key) {
+        TechnologiesItems.findByIdAndRemove(_id).then(err => {
+            if (!err) {
+                res.send({
+                    success: true,
+                    message: "Technologie Item has been deleted successfully"
+                })
+            } else {
+                res.send({
+                    success: true,
+                    message: err
+                })
+            }
+        })
+    } else {
+        res.send({
+            success: true,
+            message: "Invalid api key"
+        })
     }
 })
 

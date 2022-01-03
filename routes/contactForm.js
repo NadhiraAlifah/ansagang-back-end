@@ -6,21 +6,64 @@ const router = express.Router()
 
 router.get('/get', async (req, res) => {
     const contactForm = await ContactMe.find({})
-    res.send(contactForm)
+    res.send({
+        success: true,
+        data: contactForm,
+        message: "Contact Form has been retrieved successfully"
+    })
 })
 
 router.post('/add/apikey=:apikey', async (req, res) => {
-    const { username, subject, email , message } = req.body
-    const apikey = await Configs.find({})
-    if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-        new ContactMe({ username: username, subject: subject, email: email, message: message }).save(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
+    const { username, subject, email, message } = req.body
+    const configs = await Configs.findOne({ _id: "61bb0a67959494f1b8ba8375" })
+    if (req.params.apikey === configs.api_key) {
+        new ContactMe({
+            username: username,
+            subject: subject,
+            email: email,
+            message: message
+        }).save(err => {
+            if (!err) {
+                res.send({
+                    success: true,
+                    message: "Contact Detail has been added successfully"
+                })
+            } else {
+                res.send({
+                    success: false,
+                    message: err
+                })
+            }
+        })
+    } else {
+        res.send({
+            success: false,
+            message: "Invalid api key"
+        })
     }
 })
 
 router.post('/delete/apikey=:apikey', async (req, res) => {
-    const apikey = await Configs.find({})
-    if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-        ContactMe.deleteMany().then(err => { if (!err) res.json({ success: true }); else res.json({ success: false, error: err }) })
+    const configs = await Configs.findOne({ _id: "61bb0a67959494f1b8ba8375" })
+    if (req.params.apikey === configs.api_key) {
+        ContactMe.deleteMany().then(err => {
+            if (!err) {
+                res.send({
+                    success: true,
+                    message: "Contact Form have been cleared successfully"
+                })
+            } else {
+                res.send({
+                    success: false,
+                    message: err
+                })
+            }
+        })
+    } else {
+        res.send({
+            success: false,
+            message: "Invalid api key"
+        })
     }
 })
 
