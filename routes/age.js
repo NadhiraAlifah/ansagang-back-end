@@ -14,28 +14,21 @@ router.get('/get', async (req, res) => {
 })
 
 router.post('/change/apikey=:apikey', async (req, res) => {
-    try {
-        const { age, date, _id } = req.body
-        const apikey = await Configs.find({})
-        if (req.params.apikey === apikey[apikey.length - 1].api_password) {
-            Age.findByIdAndUpdate(_id, { age: age, date: date }).then(err => {
-                if (!err) {
-                    res.send({
-                        success: true,
-                        message: "Lessons have been changed successfully"
-                    })
-                } else {
-                    res.send({
-                        success: false,
-                        message: err
-                    })
-                }
-            })
-        }
-    } catch {
-        res.send({
-            success: false,
-            message: 'Missing fields'
+    const { age, date, _id } = req.body
+    const apikey = await Configs.find({})
+    if (req.params.apikey === apikey[apikey.length - 1].api_password) {
+        Age.findByIdAndUpdate(_id, { age: age, date: date }).then(err => {
+            if (!err) {
+                res.send({
+                    success: true,
+                    message: "Lessons have been changed successfully"
+                })
+            } else {
+                res.send({
+                    success: false,
+                    message: err
+                })
+            }
         })
     }
 })
