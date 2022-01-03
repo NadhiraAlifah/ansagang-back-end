@@ -4,7 +4,7 @@ import Configs from '../models/configs.model.js'
 
 const router = express.Router()
 
-router.get('/get', async (res) => {
+router.get('/get', async (req, res) => {
     const age = await Age.find({})
     res.send({
         success: true,
