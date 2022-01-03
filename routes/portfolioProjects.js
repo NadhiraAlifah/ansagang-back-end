@@ -40,10 +40,10 @@ router.get('/get', async (req, res) => {
 })
 
 router.get('/project-:id/get', async (req, res) => {
-    const portfolioProjects = await PortfolioProjects.findOne({ _id: req.params.id })
+    const portfolioProject = await PortfolioProjects.findOne({ _id: req.params.id })
     res.send({
         success: true,
-        data: portfolioProjects,
+        data: portfolioProject,
         message: "Portfolio Project has been retrieved successfully"
     })
 })

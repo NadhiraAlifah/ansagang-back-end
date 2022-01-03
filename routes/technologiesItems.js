@@ -40,6 +40,16 @@ router.get('/get', async (req, res) => {
     })
 })
 
+router.get('/random/get', async (req, res) => {
+    const technologiesItems = await TechnologiesItems.find({})
+    const technologiesItem = technologiesItems[Math.floor(Math.random() * technologiesItems.length)]
+    res.send({
+        success: true,
+        data: technologiesItem,
+        message: "Technologies Items have been retrieved successfully"
+    })
+})
+
 router.post('/add/apikey=:apikey', upload.single('img'), async (req, res) => {
     const { id, title } = req.body
     const configs = await Configs.findOne({ _id: "61bb0a67959494f1b8ba8375" })
